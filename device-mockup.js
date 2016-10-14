@@ -3,6 +3,11 @@
 // TODO(andre:2016-10-11): usar 'bordas falsas' para permitir passar seu tamanho como porcentagem
 // TODO(andre:2016-10-11): organizar funções 'parseInt' em apenas um lugar
 
+function getAttr(elem, value, def)
+{
+   return elem.hasAttribute(value) ? elem.getAttribute(value) : def;
+}
+
 function calcRatio(a, b)
 {
    return (a / b * 100) + "%";
@@ -26,11 +31,17 @@ for(var i = 0; i < devices.length; ++i)
    var device = devices[i];
 
    var devId = device.id;
+   if(devId === "")
+   {
+      console.log("Device missing ID attribute");
+      console.log(device);
+      continue;
+   }
 
-   var devWidth = device.getAttribute("dev-width");
-   var devHeight = device.getAttribute("dev-height");
-   var devColor = device.getAttribute("dev-color");
-   var devBorder = device.getAttribute("dev-border").split(" ");
+   var devWidth = getAttr(device, "dev-width", 360);
+   var devHeight = getAttr(device, "dev-height", 640);
+   var devColor = getAttr(device, "dev-color", "#000");
+   var devBorder = getAttr(device, "dev-border", "0").split(" ");
    var devBorderTop, devBorderRight, devBorderBottom, devBorderLeft;
    switch (devBorder.length) {
       case 1:
@@ -52,7 +63,7 @@ for(var i = 0; i < devices.length; ++i)
          devBorderLeft = devBorder[3];
          break;
    }
-   var devBorderRadius = device.getAttribute("dev-border-radius");
+   var devBorderRadius = getAttr(device, "dev-border-radius", "0");
 
    var devTotalWidth = parseInt(devWidth) + parseInt(devBorderRight) + parseInt(devBorderLeft);
    var devTotalHeight = parseInt(devHeight) + parseInt(devBorderTop) + parseInt(devBorderBottom);
@@ -80,14 +91,14 @@ for(var i = 0; i < devices.length; ++i)
    {
       component = components[j];
 
-      var place = component.getAttribute("dev-place");
-      var position = parseInt(component.getAttribute("dev-position")) || 0;
-      var width = component.getAttribute("dev-width");
-      var height = component.getAttribute("dev-height");
-      var color = component.getAttribute("dev-color");
-      var borderSize = component.getAttribute("dev-border-size") || 0;
-      var borderColor = component.getAttribute("dev-border-color") || "#000";
-      var borderRadius = component.getAttribute("dev-border-radius");
+      var place = getAttr(component, "dev-place", "top");
+      var position = parseInt(getAttr(component, "dev-position", "0"));
+      var width = getAttr(component, "dev-width", "16");
+      var height = getAttr(component, "dev-height", "16");
+      var color = getAttr(component, "dev-color", "#777");
+      var borderSize = getAttr(component, "dev-border-size", "0");
+      var borderColor = getAttr(component, "dev-border-color", "#000");
+      var borderRadius = getAttr(component, "dev-border-radius", "8");
 
       var positionStyle;
       switch (place) {
