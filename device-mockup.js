@@ -104,8 +104,8 @@ for(var i = 0; i < devices.length; ++i)
       switch (place) {
          case "center":
             positionStyle = "top: " + calcRatio(devBorderTop, devTotalHeight) + "; right: " + calcRatio(devBorderRight, devTotalWidth) + "; bottom: " + calcRatio(devBorderBottom, devTotalHeight) + "; left: " + calcRatio(devBorderLeft, devTotalWidth);
-            width = width || devWidth;
-            height = height || devHeight;
+            width = devWidth;
+            height = devHeight;
             break;
          case "top":
             positionStyle = "top: " + calcRatio((devBorderTop - height)/2, devTotalHeight) + "; left: " + calcRatio((devWidth - width)/2 + parseInt(devBorderLeft) + position, devTotalWidth);
