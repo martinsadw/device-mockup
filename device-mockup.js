@@ -119,6 +119,18 @@ for(var i = 0; i < devices.length; ++i)
          case "left":
             positionStyle = "left: " + calcRatio((devBorderLeft - width)/2, devTotalWidth) + "; top: " + calcRatio((devHeight - height)/2 + parseInt(devBorderTop) + position, devTotalHeight);
             break;
+         case "outer-top":
+            positionStyle = "top: " + calcRatio(-height, devTotalHeight) + "; left: " + calcRatio((devWidth - width)/2 + parseInt(devBorderLeft) + position, devTotalWidth);
+            break;
+         case "outer-right":
+            positionStyle = "right: " + calcRatio(-width, devTotalWidth) + "; top: " + calcRatio((devHeight - height)/2 + parseInt(devBorderTop) + position, devTotalHeight);
+            break;
+         case "outer-bottom":
+            positionStyle = "bottom: " + calcRatio(-height, devTotalHeight) + "; left: " + calcRatio((devWidth - width)/2 + parseInt(devBorderLeft) + position, devTotalWidth);
+            break;
+         case "outer-left":
+            positionStyle = "left: " + calcRatio(-width, devTotalWidth) + "; top: " + calcRatio((devHeight - height)/2 + parseInt(devBorderTop) + position, devTotalHeight);
+            break;
          default:
             positionStyle = "margin: auto";
       }
