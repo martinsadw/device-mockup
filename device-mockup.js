@@ -2,6 +2,7 @@
 // TODO(andre:2016-10-11): criar apenas uma tag style (?)
 // TODO(andre:2016-10-11): usar 'bordas falsas' para permitir passar seu tamanho como porcentagem
 // TODO(andre:2016-10-11): organizar funções 'parseInt' em apenas um lugar
+// TODO(andre:2016-10-18): permitir posicionar elementos na parte interior do dispositivo?
 
 function getAttr(elem, value, def)
 {
@@ -41,7 +42,7 @@ for(var i = 0; i < devices.length; ++i)
    var devWidth = getAttr(device, "dev-width", 360);
    var devHeight = getAttr(device, "dev-height", 640);
    var devColor = getAttr(device, "dev-color", "#000");
-   var devBorder = getAttr(device, "dev-border", "0").split(" ");
+   var devBorder = getAttr(device, "dev-border-size", "0").split(" ");
    var devBorderTop, devBorderRight, devBorderBottom, devBorderLeft;
    switch (devBorder.length) {
       case 1:
