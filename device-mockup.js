@@ -3,6 +3,7 @@
 // TODO(andre:2016-10-11): usar 'bordas falsas' para permitir passar seu tamanho como porcentagem
 // TODO(andre:2016-10-11): organizar funções 'parseInt' em apenas um lugar
 // TODO(andre:2016-10-18): permitir posicionar elementos na parte interior do dispositivo?
+// TODO(andre:2016-10-19): aplicar espacamento de acordo com os elementos na parte exterior do dispositivo
 
 function getAttr(elem, value, def)
 {
@@ -72,10 +73,10 @@ for(var i = 0; i < devices.length; ++i)
    var devRatio = devTotalHeight / devTotalWidth;
 
    createCSSRule("#"+devId, [
-      "margin: 16px",
       "position: relative",
       "display: " + "block",
       "width: " + devTotalWidth + "px",
+      "max-width: " + devTotalWidth + "px",
       "background-color: " + devColor,
       "border-radius: " + calcRatio(devBorderRadius, devTotalWidth) + " / " + calcRatio(devBorderRadius, devTotalHeight)
    ]);
@@ -137,6 +138,7 @@ for(var i = 0; i < devices.length; ++i)
       }
 
       createCSSRule("#"+devId + " dev-component:nth-of-type("+(j+1)+")", [
+         "box-sizing: border-box",
          "position: absolute",
          positionStyle,
          "display: " + "block",
