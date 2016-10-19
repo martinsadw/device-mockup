@@ -1,0 +1,22 @@
+{
+  "name": "device-mockup",
+  "version": "0.1.0",
+  "description": "Uma biblioteca JavaScript para gerar dispositivos responsíveis usando apenas HTML e CSS.",
+  "main": "device-mockup.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martinsadw/device-mockup.git"
+  },
+  "keywords": [
+    "mockup"
+  ],
+  "author": "André F. Martins <martins.adw@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/martinsadw/device-mockup/issues"
+  },
+  "homepage": "https://github.com/martinsadw/device-mockup#readme"
+}
